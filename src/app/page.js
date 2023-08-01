@@ -31,11 +31,11 @@ export default async function Home() {
     <main className="grid grid-cols-3 gap-4">
       {data.map((item, index) => {
         return (
-          <div className="">
+          <div key={index}>
             <div>
               {images.map((imageItem, imageIndex) => {
                 if (item.id === imageItem.post) {
-                  return <img src={imageItem.source_url} />;
+                  return <img src={imageItem.source_url} key={imageIndex} />;
                 }
               })}
             </div>

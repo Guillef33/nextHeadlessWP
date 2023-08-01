@@ -1,4 +1,7 @@
 import Navbar from "../components/Navbar";
+import { getAllPosts } from "../lib/getAllPosts";
+import { getAllImages } from "../lib/getAllImages";
+import BlogGrid from "../components/BlogGrid";
 
 export async function getData() {
   const res = await fetch(
@@ -12,11 +15,13 @@ export async function getData() {
   return res.json();
 }
 
-function Blog() {
+async function Blog() {
+  const data = await getAllPosts();
+  const images = await getAllImages();
   return (
     <div className="max-w-screen-xl mx-auto">
       <Navbar />
-      <h1>The blog page</h1>
+      <BlogGrid data={data} images={images} />
     </div>
   );
 }

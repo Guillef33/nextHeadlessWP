@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <img
             src="https://flowbite.com/docs/images/logo.svg"
             className="h-8 mr-3"
@@ -13,7 +13,7 @@ function Navbar() {
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             Headless WP Next
           </span>
-        </a>
+        </Link>
         <button
           data-collapse-toggle="navbar-default"
           type="button"

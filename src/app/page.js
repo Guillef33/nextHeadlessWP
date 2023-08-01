@@ -1,18 +1,9 @@
 import Image from "next/image";
 import Navbar from "./components/Navbar";
 import Link from "next/link";
-
-async function getData() {
-  const res = await fetch(
-    "https://guilleflores2.peymi.net/wp-json/wp/v2/posts"
-  );
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json();
-}
+import { getAllPosts } from "./lib/getAllPosts";
+import { getPostById } from "./lib/getPostById";
+import { getAllImages } from "./lib/getAllImages";
 
 async function getImages() {
   const res = await fetch(
@@ -27,8 +18,8 @@ async function getImages() {
 }
 
 export default async function Home() {
-  const data = await getData();
-  const images = await getImages();
+  const data = await getAllPosts();
+  const images = await getAllImages();
 
   return (
     <main>

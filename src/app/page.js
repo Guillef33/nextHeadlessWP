@@ -1,7 +1,9 @@
 import Image from "next/image";
 
 async function getData() {
-  const res = await fetch("http://prueba.local/wp-json/wp/v2/posts");
+  const res = await fetch(
+    "https://guilleflores2.peymi.net/wp-json/wp/v2/posts"
+  );
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -11,7 +13,9 @@ async function getData() {
 }
 
 async function getImages() {
-  const res = await fetch("http://prueba.local/wp-json/wp/v2/media");
+  const res = await fetch(
+    "https://guilleflores2.peymi.net/wp-json/wp/v2/media"
+  );
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -23,9 +27,6 @@ async function getImages() {
 export default async function Home() {
   const data = await getData();
   const images = await getImages();
-
-  console.log(data);
-  console.log(images);
 
   return (
     <main className="grid grid-cols-3 gap-4">

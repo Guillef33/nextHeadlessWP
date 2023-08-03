@@ -18,6 +18,8 @@ export async function getData() {
 async function Blog() {
   const data = await getAllPosts();
   const images = await getAllImages();
+
+
   return (
     <div className="max-w-screen-xl mx-auto">
       <Navbar />

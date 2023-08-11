@@ -26,7 +26,6 @@ export default async function Page({ params }) {
 
   return (
     <div className="max-w-screen-xl mx-auto">
-      <Navbar />
       <img
         className="w-full h-[30rem] object-cover"
         src={`https://guilleflores2.peymi.net/wp-content/uploads/${image.media_details.file}`}

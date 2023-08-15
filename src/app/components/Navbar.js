@@ -1,6 +1,37 @@
+"use client";
+
 import Link from "next/link";
+import { UserAuth } from "../context/AuthContext";
+import { useState, useEffect } from "react";
 
 function Navbar() {
+  const { user, googleSignIn, logOut } = UserAuth();
+  const [loading, setLoading] = useState(false);
+
+  const handleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const checkAuthentication = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      setLoading(false);
+    };
+    checkAuthentication();
+  }, [user]);
+
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -64,31 +95,44 @@ function Navbar() {
                 Proyectos
               </Link>
             </li>
+            {user ? (
+              <div className="flex">
+                <li>
+                  <Link
+                    href="/contact"
+                    className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  >
+                    Contact
+                  </Link>
+                </li>
+                <li className="ml-6">
+                  <Link
+                    href="/donar"
+                    className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  >
+                    Donar
+                  </Link>
+                </li>
+              </div>
+            ) : null}
 
-            <li>
-              <Link
-                href="/contact"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/login"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                LogIn
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/login"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Donar
-              </Link>
-            </li>
+            {!user ? (
+              <div className="flex">
+                <li
+                  onClick={handleSignIn}
+                  className="cursor-pointer block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  Login
+                </li>
+              </div>
+            ) : (
+              <div className="flex">
+                <p>Welcome, {user.displayName}</p>
+                <p className="ml-6 cursor-pointer" onClick={handleSignOut}>
+                  Sign Out
+                </p>
+              </div>
+            )}
           </ul>
         </div>
       </div>

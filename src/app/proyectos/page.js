@@ -13,7 +13,7 @@ function ProyectosPage() {
     url: "",
     pais: "",
     tecnologia: "",
-    key: Math.random().toString(), 
+    key: Math.random().toString(),
   });
 
   const addTodo = () => {
@@ -49,9 +49,9 @@ function ProyectosPage() {
       />
 
       <div className="grid grid-cols-3">
-        {proyectos.map((item) => {
+        {proyectos.map((item, index) => {
           return (
-            <div className="p-6 border">
+            <div className="p-6 border" key={index}>
               <h1>Cliente: {item.nombre}</h1>
               <h4>Url: {item.url}</h4>
               <p>Technologia: {item.tecnologia}</p>

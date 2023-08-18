@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 function Donar() {
   const { user } = UserAuth();

@@ -68,12 +68,12 @@ function About() {
 
   return (
     <div className="max-w-screen-xl mx-auto">
-      <h1>Sobre nosotros</h1>
+      <h1 className="text-[2rem bg-black text-white">Sobre nosotros</h1>
       <div className="grid grid-cols-3">
         {items.map((item, index) => {
           return (
             <div className="p-6 border" key={index}>
-              <h2>{item.nombre}</h2>
+              <h2 className="text-black hover:text-white">{item.nombre}</h2>
               <h2>{item.puesto}</h2>
             </div>
           );

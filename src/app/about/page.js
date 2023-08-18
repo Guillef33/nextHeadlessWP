@@ -87,8 +87,9 @@ function About() {
         /> */}
         <div>
           <h2>Agregar un nuevo Empleado</h2>
+          
           <div>
-            <input
+            <input 
               type="text"
               placeholder="name"
               value={newItem.nombre}

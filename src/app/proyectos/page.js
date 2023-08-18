@@ -57,7 +57,6 @@ function ProyectosPage() {
               <p className="text-gray-700 text-base">Technologia: {item.tecnologia}</p>
               <p>{item.año}</p>
               <p className="text-gray-700 text-base">Pais: {item.pais}</p>
-              <p >Pais:</p>
 
             </div>
           );

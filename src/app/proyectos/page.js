@@ -48,13 +48,15 @@ function ProyectosPage() {
         addTodo={addTodo}
       />
 
-      <div className="grid grid-cols-3 max-w-sm rounded overflow-hidden shadow-lg">
+      <div className="grid grid-cols-3 rounded overflow-hidden shadow-lg">
         {proyectos.map((item, index) => {
           return (
             <div className="p-6 border" key={index}>
               <h1 className="font-bold text-xl mb-2">Cliente: {item.nombre}</h1>
               <h4 className="text-gray-700 text-base">Url: {item.url}</h4>
-              <p className="text-gray-700 text-base">Technologia: {item.tecnologia}</p>
+              <p className="text-gray-700 text-base">
+                Technologia: {item.tecnologia}
+              </p>
               <p>{item.año}</p>
               <p className="text-gray-700 text-base">Pais: {item.pais}</p>
             </div>

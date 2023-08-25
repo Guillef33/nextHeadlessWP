@@ -68,11 +68,11 @@ function About() {
 
   return (
     <div className="max-w-screen-xl mx-auto">
-      <h1 className="text-[2rem bg-black text-white">Sobre nosotros</h1>
+      <h1 className="text-3xl font-bold sm:text-4xl">Sobre nosotros</h1>
       <div className="grid grid-cols-3">
         {items.map((item, index) => {
           return (
-            <div className="p-6 border" key={index}>
+            <div className="bg-blue-50 block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200" key={index}>
               <h2 className="text-black hover:text-white">{item.nombre}</h2>
               <h2>{item.puesto}</h2>
             </div>
@@ -85,10 +85,11 @@ function About() {
           setNewItem={setNewItem}
           addItem={addItem}
         /> */}
+        
         <div>
-          <h2>Agregar un nuevo Empleado</h2>
-          <h2>Acordate subir los datos</h2>
-          <div>
+         
+          
+          <div className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10">
             <input 
               type="text"
               placeholder="name"
@@ -115,3 +116,5 @@ function About() {
 }
 
 export default About;
+
+

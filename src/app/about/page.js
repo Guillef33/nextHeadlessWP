@@ -68,13 +68,13 @@ function About() {
 
   return (
     <div className="max-w-screen-xl mx-auto">
-      <h1 className="text-3xl font-bold sm:text-4xl">Sobre nosotros</h1>
+      <h1 className="text-3xl font-bold sm:text-4xl m-8">Sobre nosotros</h1>
       <div className="grid grid-cols-3">
         {items.map((item, index) => {
           return (
-            <div className="bg-blue-50 block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200" key={index}>
-              <h2 className="text-black hover:text-white">{item.nombre}</h2>
-              <h2>{item.puesto}</h2>
+            <div className="bg-blue-50 block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 m-8 w-32 h-20" key={index}>
+              <h2 className="text-sm font-semibold leading-6 text-indigo-600">{item.nombre}</h2>
+              <h2 className="text-sm font-semibold leading-6 text-indigo-600">{item.puesto}</h2>
             </div>
           );
         })}

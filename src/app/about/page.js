@@ -87,7 +87,7 @@ function About() {
         /> */}
         <div>
           <h2>Agregar un nuevo Empleado</h2>
-          
+          <h2>Acordate subir los datos</h2>
           <div>
             <input 
               type="text"

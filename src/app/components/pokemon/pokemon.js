@@ -1,7 +1,33 @@
-import React from "react";
+"use client";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getPokemons } from "../../store/slices/pokemons/thunks";
 
-function Pokemon() {
-  return <div>Nuestra lista de pokemones</div>;
+export function Pokemon() {
+  const dispatch = useDispatch();
+
+  const { isLoading, pokemons, page } = useSelector((state) => state.pokemons);
+
+  useEffect(() => {
+    return () => {
+      dispatch(getPokemons());
+    };
+  }, []);
+
+  return (
+    <div className="max-w-screen-xl mx-auto">
+      Nuestra lista de pokemones
+      <p>Loading: {isLoading ? "True" : "False"}</p>
+      <ul>
+        {pokemons.map((item, index) => (
+          <li key={item.name}>{item.name}</li>
+        ))}
+      </ul>
+      <button disabled={isLoading} onClick={() => dispatch(getPokemons(page))}>
+        Next
+      </button>
+    </div>
+  );
 }
 
 export default Pokemon;

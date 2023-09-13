@@ -135,9 +135,9 @@ function Navbar() {
               </div>
             ) : (
               <div className="flex">
-                <p>Welcome, {user.displayName}</p>
+                <p>Bienvenido, {user.displayName}</p>
                 <p className="ml-6 cursor-pointer" onClick={handleSignOut}>
-                  Sign Out
+                  Salir
                 </p>
               </div>
             )}

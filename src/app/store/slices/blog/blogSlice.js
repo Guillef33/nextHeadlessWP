@@ -7,16 +7,18 @@ const initialState = {
 };
 
 export const blogSlice = createSlice({
-  name: "blogPost",
+  name: "posts",
   initialState,
   reducers: {
     startLoadingPosts: (state) => {
       state.isLoading = true;
     },
-    setPost: (state, action) => {
-      console.log(action);
+    setPosts: (state, action) => {
+      state.isLoading = false;
+      state.page = action.payload.page;
+      state.pokemons = action.payload.pokemons;
     },
   },
 });
 
-export const { startLoadingPosts, setPost } = blogSlice.actions;
+export const { startLoadingPosts, setPosts } = blogSlice.actions;

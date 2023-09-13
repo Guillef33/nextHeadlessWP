@@ -11,7 +11,7 @@ export default async function BlogGrid({ data, images }) {
 
         return (
           <div key={index} className="p-6">
-            <div className="w-full">
+            {/* <div className="w-full">
               {images.map((imageItem, imageIndex) => {
                 if (item.id === imageItem.post) {
                   return (
@@ -24,7 +24,7 @@ export default async function BlogGrid({ data, images }) {
                   );
                 }
               })}
-            </div>
+            </div> */}
             <h2 className="py-4">
               <Link
                 href={`/blog/${item.slug}`}

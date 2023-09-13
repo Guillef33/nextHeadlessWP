@@ -19,7 +19,7 @@ export function Pokemon() {
       Nuestra lista de pokemones
       <p>Loading: {isLoading ? "True" : "False"}</p>
       <ul>
-        {pokemons.map((item, index) => (
+        {pokemons.map((item) => (
           <li key={item.name}>{item.name}</li>
         ))}
       </ul>

@@ -1,27 +1,32 @@
+"use client";
+
 import Navbar from "../components/Navbar";
-import { getAllPosts } from "../lib/getAllPosts";
-import { getAllImages } from "../lib/getAllImages";
+// import { getAllPosts } from "../lib/getAllPosts";
+// import { getAllImages } from "../lib/getAllImages";
 import BlogGrid from "../components/BlogGrid";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getBlogPosts } from "../store/slices/blog/thunk";
 
-// export async function getData() {
-//   const res = await fetch(
-//     "https://guilleflores2.peymi.net/wp-json/wp/v2/posts"
-//   );
+function Blog() {
+  const dispatch = useDispatch();
 
-//   if (!res.ok) {
-//     throw new Error("Failed to fetch data");
-//   }
+  const { isLoading, posts, page } = useSelector((state) => state.posts);
 
-//   return res.json();
-// }
+  console.log(posts);
 
-async function Blog() {
-  const data = await getAllPosts();
-  const images = await getAllImages();
+  const posteos = dispatch(getBlogPosts());
+
+  useEffect(() => {
+    return () => {
+      dispatch(getBlogPosts());
+    };
+  }, []);
 
   return (
     <div className="max-w-screen-xl mx-auto">
-      <BlogGrid data={data} images={images} />
+      <p>Loading: {isLoading ? "True" : "False"}</p>
+      <BlogGrid data={posts} />
     </div>
   );
 }

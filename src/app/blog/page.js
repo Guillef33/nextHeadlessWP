@@ -13,22 +13,23 @@ function Blog() {
 
   const { isLoading, posts, page } = useSelector((state) => state.posts);
 
-  const posteos = dispatch(getBlogPosts(2));
+  useEffect(() => {
+    return () => {
+      dispatch(getBlogPosts());
+    };
+  }, []);
 
-  console.log(posteos);
-
-  // useEffect(() => {
-  //   return () => {
-  //     dispatch(getBlogPosts());
-  //   };
-  // }, []);
+  console.log(posts);
 
   return (
     <div className="max-w-screen-xl mx-auto">
       <p>Loading: {isLoading ? "True" : "False"}</p>
-      {posteos.map((item, index) => {
-        <h2>{item.id}</h2>;
+      {posts.map((item, index) => {
+        return <h2>{item.id}</h2>;
       })}
+      <button disabled={isLoading} onClick={() => dispatch(getBlogPosts(page))}>
+        Next
+      </button>
       {/* <BlogGrid data={posts} /> */}
     </div>
   );

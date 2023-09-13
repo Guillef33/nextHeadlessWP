@@ -7,8 +7,6 @@ export const getBlogPosts = (page = 0) => {
 
     const { data } = await blogsApi.get(`/posts`);
 
-    console.log(data);
-
-    dispatch(setPosts({ blogs: data.results, page: page + 1 }));
+    dispatch(setPosts({ posts: data, page: page + 1 }));
   };
 };

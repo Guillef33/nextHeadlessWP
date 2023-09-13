@@ -24,11 +24,19 @@ function Blog() {
   return (
     <div className="max-w-screen-xl mx-auto">
       <p>Loading: {isLoading ? "True" : "False"}</p>
-      {posts.map((item, index) => {
-        return <h2>{item.id}</h2>;
-      })}
+      <section className="grid grid-cols-3 gap-4 max-w-screen-xl mx-auto">
+        {posts.map((item, index) => {
+          return (
+            <div key={item.id}>
+              <h1>{item.title.rendered}</h1>
+              <h2>{item.author}</h2>
+              <p>{item.excerpt.rendered}</p>
+            </div>
+          );
+        })}
+      </section>
       <button disabled={isLoading} onClick={() => dispatch(getBlogPosts(page))}>
-        Next
+        Show Posts
       </button>
       {/* <BlogGrid data={posts} /> */}
     </div>

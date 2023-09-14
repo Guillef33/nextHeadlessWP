@@ -14,9 +14,9 @@ function Blog() {
   const { isLoading, posts, page } = useSelector((state) => state.posts);
 
   useEffect(() => {
-    return () => {
-      dispatch(getBlogPosts());
-    };
+    // return () => {
+    dispatch(getBlogPosts());
+    // };
   }, []);
 
   console.log(posts);

@@ -25,7 +25,7 @@ export default async function Page({ params }) {
   const textClean = post1[0].content.rendered.replace(/<\/?[^>]+>/gi, "");
 
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <div className="max-w-screen-xl mx-auto rounded-[10px] bg-white p-4 !pt-20 sm:p-6">
       <img
         className="w-full h-[30rem] object-cover"
         src={`https://guilleflores2.peymi.net/wp-content/uploads/${image.media_details.file}`}

@@ -68,13 +68,13 @@ function About() {
 
   return (
     <div className="max-w-screen-xl mx-auto">
-      <h1 className="text-[2rem bg-black text-white">Sobre nosotros</h1>
+      <h1 className="text-3xl font-bold sm:text-4xl m-8">Sobre nosotros</h1>
       <div className="grid grid-cols-3">
         {items.map((item, index) => {
           return (
-            <div className="p-6 border" key={index}>
-              <h2 className="text-black hover:text-white">{item.nombre}</h2>
-              <h2>{item.puesto}</h2>
+            <div className="bg-blue-50 block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 m-8 w-32 h-20" key={index}>
+              <h2 className="text-sm font-semibold leading-6 text-indigo-600">{item.nombre}</h2>
+              <h2 className="text-sm font-semibold leading-6 text-indigo-600">{item.puesto}</h2>
             </div>
           );
         })}
@@ -85,10 +85,11 @@ function About() {
           setNewItem={setNewItem}
           addItem={addItem}
         /> */}
+        
         <div>
-          <h2>Agregar un nuevo Empleado</h2>
-          <h2>Acordate subir los datos</h2>
-          <div>
+         
+          
+          <div className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10">
             <input 
               type="text"
               placeholder="name"
@@ -106,7 +107,7 @@ function About() {
               }
             />
 
-            <button onClick={addItem}>Add Empleado</button>
+            <button className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={addItem}>Add Empleado</button>
           </div>
         </div>
       </div>
@@ -115,3 +116,5 @@ function About() {
 }
 
 export default About;
+
+

@@ -16,6 +16,7 @@ import {
 import AddEmpleados from "../components/about/AddEmpleados";
 import { db } from "../lib/Firebase";
 import Heading from "../components/proyectos/Heading";
+import Card from "../components/Card";
 import Description from "../components/proyectos/description";
 
 function About() {
@@ -123,6 +124,10 @@ function About() {
               Add Empleado
             </button>
           </div>
+        </div>
+        <div className="ListadoDeEmpleadosFijos">
+          <Card />
+
         </div>
       </div>
     </div>

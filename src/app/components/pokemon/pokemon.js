@@ -9,9 +9,7 @@ export function Pokemon() {
   const { isLoading, pokemons, page } = useSelector((state) => state.pokemons);
 
   useEffect(() => {
-    return () => {
-      dispatch(getPokemons());
-    };
+    dispatch(getPokemons());
   }, []);
 
   return (

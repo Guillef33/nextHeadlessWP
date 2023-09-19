@@ -16,6 +16,7 @@ import {
 import AddEmpleados from "../components/about/AddEmpleados";
 import { db } from "../lib/Firebase";
 import Heading from "../components/proyectos/Heading";
+import Description from "../components/proyectos/description";
 
 function About() {
   const [items, setItems] = useState([
@@ -71,6 +72,7 @@ function About() {
     <div className="max-w-screen-xl mx-auto">
       <h1 className="text-3xl font-bold sm:text-4xl m-8">Sobre nosotros</h1>
       <Heading title="Sobre nosotros" />
+      <Description description="Esta es la página sobre nosotros" />
       <div className="grid grid-cols-3">
         {items.map((item, index) => {
           return (

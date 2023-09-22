@@ -1,5 +1,5 @@
 import { startLoadingPokemons, setPokemons } from "./pokemonSlice";
-import { pokemonApi } from "@/app/api/pokemonApi";
+import { pokemonApi } from "../../../api/pokemonApi";
 
 export const getPokemons = (page = 0) => {
   return async (dispatch, getState) => {
@@ -9,6 +9,21 @@ export const getPokemons = (page = 0) => {
       `/pokemon?limit=10&offset=${page * 10}`
     );
 
-    dispatch(setPokemons({ pokemons: data.results, page: page + 1 }));
+    const pokemonsWithImages = await Promise.all(
+      data.results.map(async (pokemon, index) => {
+        const { data: pokemonData } = await pokemonApi.get(
+          `/pokemon/${pokemon.name}`
+        );
+
+        return {
+          name: pokemon.name,
+          image: pokemonData.sprites.front_default,
+          order: pokemonData.order,
+          weight: pokemonData.weight,
+        };
+      })
+    );
+
+    dispatch(setPokemons({ pokemons: pokemonsWithImages, page: page + 1 }));
   };
 };

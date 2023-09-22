@@ -12,15 +12,22 @@ export function Pokemon() {
     dispatch(getPokemons());
   }, []);
 
+  console.log(pokemons);
+
   return (
     <div className="max-w-screen-xl mx-auto">
       Nuestra lista de pokemones
       <p>Loading: {isLoading ? "True" : "False"}</p>
-      <ul>
+      <div className="grid grid-cols-3">
         {pokemons.map((item) => (
-          <li key={item.name}>{item.name}</li>
+          <div key={item.name}>
+            <img src={item.image} alt="Image de un pokemon" />
+            <h1>{item.name}</h1>
+            <p>Peso: {item.weight} </p>
+            <p>Numero: {item.order}</p>
+          </div>
         ))}
-      </ul>
+      </div>
       <button disabled={isLoading} onClick={() => dispatch(getPokemons(page))}>
         Next
       </button>

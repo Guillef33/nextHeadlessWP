@@ -3,14 +3,13 @@
 import Link from "next/link";
 import { UserAuth } from "../context/AuthContext";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { startGoogleSignIn } from "../store/slices/auth/thunk";
 
 function Navbar() {
   const dispatch = useDispatch();
-
-  const { user, googleSignIn, logOut } = UserAuth();
+  const { user, logOut } = UserAuth();
   const [loading, setLoading] = useState(false);
 
   const handleSignIn = async () => {

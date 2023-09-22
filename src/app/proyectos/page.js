@@ -1,13 +1,32 @@
 "use client";
-
+import { useDispatch, useSelector } from "react-redux";
+import { FirebaseAuth } from "../lib/Firebase";
+import { onAuthStateChanged } from "firebase/auth";
 import Navbar from "../components/Navbar";
 import { Proyectos } from "../components/proyectos/List";
 import AddProyecto from "../components/proyectos/AddProyecto";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Heading from '../components/proyectos/Heading'
+import Heading from "../components/proyectos/Heading";
+import { login, logout } from "../store/slices/auth/authSlice";
 
 function ProyectosPage() {
+  const { status } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  console.log(status);
+
+  useEffect(() => {
+    onAuthStateChanged(FirebaseAuth, async (user) => {
+      if (!user) return dispatch(logout());
+
+      const { uid, displayName, email, photoURL } = user;
+
+      console.log(user);
+      dispatch(login({ uid, displayName, email, photoURL }));
+    });
+  }, []);
+
   const [proyectos, setProyectos] = useState(Proyectos);
 
   useEffect(() => {

@@ -1,30 +1,21 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
-import { Proyectos } from "../components/proyectos/List";
 import {
   collection,
   addDoc,
-  getDoc,
-  querySnapshot,
   query,
   onSnapshot,
   deleteDoc,
   doc,
 } from "firebase/firestore";
-import AddEmpleados from "../components/about/AddEmpleados";
 import { db } from "../lib/Firebase";
 import Heading from "../components/proyectos/Heading";
 import Card from "../components/Card";
 import Description from "../components/proyectos/description";
 
 function About() {
-  const [items, setItems] = useState([
-    // { nombre: "Guillermo Flores", puesto: "Front End Developer" },
-    // { nombre: "Juan Flores", puesto: "WordPress Developer" },
-    // { nombre: "Alfredo Palmieri", puesto: "WordPress Developer" },
-  ]);
+  const [items, setItems] = useState([]);
 
   const [newItem, setNewItem] = useState({ nombre: "", puesto: "" });
 
@@ -40,7 +31,6 @@ function About() {
     }
   };
 
-  // Read items from database
   useEffect(() => {
     const q = query(collection(db, "empleados"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -51,15 +41,6 @@ function About() {
       });
       setItems(itemsArr);
 
-      // // Read total from itemsArr
-      // const calculateTotal = () => {
-      //   const totalPrice = itemsArr.reduce(
-      //     (sum, item) => sum + parseFloat(item.price),
-      //     0
-      //   );
-      //   setTotal(totalPrice);
-      // };
-      // calculateTotal();
       return () => unsubscribe();
     });
   }, []);
@@ -92,11 +73,6 @@ function About() {
         })}
       </div>
       <div>
-        {/* <AddEmpleados
-          newItem={newItem}
-          setNewItem={setNewItem}
-          addItem={addItem}
-        /> */}
 
         <div>
           <div className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10">

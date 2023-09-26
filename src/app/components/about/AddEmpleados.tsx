@@ -1,7 +1,5 @@
 "use client";
 
-import React, { useState } from "react";
-
 function AddEmpleados({ newItem, setNewItem, addItem }) {
   return (
     <div>

@@ -1,8 +1,6 @@
-import { authMiddleware } from "../middleware/authMiddleware";
 import Form from "../components/Form";
 
 function Contact() {
-  // const user = authMiddleware();
 
   return (
     <div className="max-w-screen-xl mx-auto ">
